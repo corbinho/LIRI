@@ -139,7 +139,7 @@ switch (typeOfSearch) {
                 
                     }
                 }
-                console.log(searchTerm)
+                // console.log(searchTerm)
                 console.log("Searching for a concert based on artist")
                 var queryUrl = "https://rest.bandsintown.com/artists/" + searchTerm + "/events?app_id=codingbootcamp";
                 axios.get(queryUrl).then(
@@ -147,16 +147,16 @@ switch (typeOfSearch) {
                         var divider = "\n------------------------------------------------------------\n\n";
                         var jsonData = response.data[0];
                         // movie ends up being the string containing the show data we will print to the console
-                        var movieData = [
+                        var concertData = [
                             "Show Venue: " + jsonData.venue.name,
                             "Venue Location: " + jsonData.venue.city + " " + jsonData.venue.region,
                             "Date of Event: " + jsonData.datetime
                         ].join("\n\n");
 
-                        fs.appendFile("log.txt", movieData + divider, function (err) {
+                        fs.appendFile("log.txt", concertData + divider, function (err) {
                             if (err) throw err;
                         });
-                        console.log(movieData)
+                        console.log(concertData)
                     }
                 );
                
